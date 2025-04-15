@@ -26,6 +26,7 @@ Go to your Kali Linux Terminal and switch to the root shell.
 To do this, type in
 
 `sudo su-`
+
 <br>
 
 

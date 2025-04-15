@@ -26,9 +26,8 @@ Go to your Kali Linux Terminal and switch to the root shell.
 To do this, type in
 
 `sudo su-`
-
-
 <br>
+
 
 #### Task 2: Set up your environment
 
@@ -43,20 +42,20 @@ Navigate to the directory containing the pcap file.
 <br>
 
 #### Task 3: Analyzing the Pcap file
-1. Checking Network Traffic from a Specific Host:
-`
-tcpdump -n -r /opt/tcpdump/magnitude_1hr.pcap host 192.168.99.52`
+I. Checking Network Traffic from a Specific Host:
+   
+`tcpdump -n -r /opt/tcpdump/magnitude_1hr.pcap host 192.168.99.52`
 
 *-n prevents hostname resolution(display IP addresses instead of hostname) while -r reads the data from the pcap file*
 
-This command filters traffic involving the IP 192.168.99.25. You can see the source IP address + port, destination IP address + port, bit flag, sequence number, and data size.
 <br>
 
 ![image](https://github.com/user-attachments/assets/e9a09e4c-2466-45c7-8f80-215d3a40edd0)
+This command filters traffic involving the IP 192.168.99.25. You can see the source IP address + port, destination IP address + port, bit flag, sequence number, and data size.
 
 <br>
 
-2. Filtering by Port Number
+II. Filtering by Port Number
 
 This command filters only HTTP traffic (port 80) related to the host:
 
@@ -69,7 +68,7 @@ You can see from the screenshot below, it is showing us all HTTP(port 80) traffi
 
 <br>
 
-3. Viewing ASCII Data in Packets
+III. Viewing ASCII Data in Packets
 
 Getting the metadata from the packets is nice. Using this command, we can get the full ASCII decode of the packet and the payload of the packet:
 
@@ -81,13 +80,15 @@ Getting the metadata from the packets is nice. Using this command, we can get th
 
 *The HTTP GET requests and actual responses are shown.*
 I use | less to prevent unending output and allow me to scroll through one page at a time.
+
 <br>
 
-4. Detecting Suspicious PowerShell Activity
-`
-tcpdump -n -r /opt/tcpdump/magnitude_1hr.pcap host 192.168.99.52 and port 80 -AX`
+IV. Detecting Suspicious PowerShell Activity
+
+`tcpdump -n -r /opt/tcpdump/magnitude_1hr.pcap host 192.168.99.52 and port 80 -AX`
 
 *-X: Displays packet data in both hex and ASCII.*
+
 <br>
 
 ![image](https://github.com/user-attachments/assets/5dfcf437-3fa6-4123-9cd5-d8680437794b)
@@ -97,7 +98,7 @@ The implication of running this command is that we get to see a comprehensive vi
 
 <br>
 
-5. Filtering by Network Range
+V. Filtering by Network Range
 
 `tcpdump -n -r /opt/tcpdump/magnitude_1hr.pcap net 192.168.99.0/24`
 <br>
@@ -108,7 +109,7 @@ This filter will help us to focus on that particular subnet. Very useful when yo
 
 <br>
 
-6. Filtering by Protocol
+VI. Filtering by Protocol
 
 To filter by protocol use the IP, TCP, UDP, or other protocol keywords. Here, I am filtering through the IP protocol.
 
